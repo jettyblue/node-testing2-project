@@ -3,7 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "rollback": "knex migrate:rollback knex migrate:latest",
+    "migrate": "knex migrate:latest",
+    "reset": "npm run rollback && npm run migrate && npm run seed",
+    "seed": "knex seed:run"
   },
   "repository": {
     "type": "git",
